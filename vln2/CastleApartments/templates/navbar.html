@@ -1,7 +1,10 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
     <title>{% block title %} CastleApartments{% endblock %}</title>
 </head>
 <body>
@@ -10,8 +13,8 @@
   <a href="#this">this</a>
   <a href="#that">that</a>
   <a href="#other">other</a>
-
     </div>
+
 <div class ="container">{% block content %} {% endblock %}</div>
 </body>
 </html>
