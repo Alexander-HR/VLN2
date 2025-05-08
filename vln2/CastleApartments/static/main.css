@@ -1,4 +1,6 @@
-
+/* ===============================
+Navbar Section
+==================================*/
 .topnav {
     background-color: #333;
     overflow: hidden;
@@ -23,4 +25,16 @@
 .topnav a.active {
   background-color: #7c0200;
   color: white;
+}
+
+/* ===============================
+Background banner section
+==================================*/
+
+#bannerimage {
+  width: 100%;
+  background-image: ;
+  height: 405px;
+  background-color: purple;
+  background-position: center;
 }
