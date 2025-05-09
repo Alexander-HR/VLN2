@@ -30,13 +30,33 @@ Navbar Section
 }
 
 /* ===============================
-Background banner section
+Profile section
 ==================================*/
+.profilePicture{
+  float: left;
+}
 
-#bannerimage {
-  width: 100%;
-  background-image: ;
-  height: 405px;
-  background-color: purple;
-  background-position: center;
+.profilePicture img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+.profileNavbar{
+  background-color: #333;
+  float: right;
+  overflow: hidden;
+  display: flex;
+  align-items: center;}
+
+.profileNavbar a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.profileNavbar a:hover {
+  background-color: #ddd;
+  color: black;
 }

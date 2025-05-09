@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-    <title>User profile</title>
-</head>
-<body>
-<div id="bannerimage"></div>
-</body>
-</html>
+{% extends "navbar.html" %} {% block title %} Navbar {% endblock %}
+{% block content %}
+{% load static %}
+<div class ="container">
+    <div class = banner>
+        
+    </div>    
+    <div class="main">
+        <div class ="profilePicture">
+            <img src="{% static 'images/test_profile_picture.jpeg' %}" alt="Profile picture">
+        </div>
+        <div class="profileNavbar">
+            <a href="">Edit profile</a>
+            <a href="">Show purchase offers</a>
+
+        </div>
+    </div>
+    <div class="bio">
+        <p>Here comes the bio that the user writes</p>
+    </div>
+</div>
+
+{% include "footer.html" %}
+{% endblock %}
