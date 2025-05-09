@@ -32,23 +32,47 @@ Navbar Section
 /* ===============================
 Profile section
 ==================================*/
+.container {
+  position: relative;
+  top: 0;
+}
+.profileWrapper {
+  display:flex;
+  align-items: flex-start;
+  gap: 40px;
+}
 .profilePicture{
-  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profilePicture img {
   border-radius: 50%;
   width: 100px;
   height: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profilePicture a{
+  
+}
+.navbarBioWrapper {
+  display:flex;
+  align-items: flex-start;
+  gap: 10;
+  flex-direction: column;
 }
 .profileNavbar{
   background-color: #333;
-  float: right;
+  float: left;
   overflow: hidden;
   display: flex;
-  align-items: center;}
+  align-items: center;
+}
 
-.profileNavbar a {
+.profileNavbar a{
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -56,7 +80,11 @@ Profile section
   font-size: 17px;
 }
 
-.profileNavbar a:hover {
+.profileNavbar a:hover{
   background-color: #ddd;
   color: black;
+}
+
+.bio {
+bottom: 0;
 }
