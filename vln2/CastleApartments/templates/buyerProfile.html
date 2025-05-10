@@ -8,7 +8,12 @@
     <div class="profileWrapper"> 
         <div class ="profilePicture">
             <img src="{% static 'images/test_profile_picture.jpeg' %}" alt="Profile picture">
-            <a href="">Upload profile picture</a>
+            <label for="uploadProfilePictureButton" class="uploadPictureButton">
+                Upload profile picture
+            </label>
+            <input id="uploadProfilePictureButton" type="file"/>
+            
+            
         </div>
         <div class="navbarBioWrapper">
             <div class="profileNavbar">
