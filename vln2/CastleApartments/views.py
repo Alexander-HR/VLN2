@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from CastleApartments.models import Property
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 # Create your views here.
 def home(request):
@@ -20,6 +22,14 @@ def property_catalog(request):
     properties = Property.objects.all()
     paginator = Paginator(properties, page_size)
     page_obj = paginator.get_page(page)
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        html = render_to_string('partials/property_cards.html', {'properties': page_obj.object_list})
+        return JsonResponse({
+            'html': html,
+            'has_next': page_obj.has_next(),
+            'next_page': page + 1
+        })
 
     return render(request, 'index.html', {
         'properties': page_obj.object_list,
