@@ -1,6 +1,9 @@
 {% extends "navbar.html" %} {% block title %} Navbar {% endblock %}
 {% block content %}
 {% load static %}
+
+<script src="{% static 'editProfileForm.js' %}"></script>
+
 <div class="banner">
     <img src="{% static 'images/test_banner.png' %}" alt="Your banner here">
 </div>
@@ -12,12 +15,29 @@
                 Upload profile picture
             </label>
             <input id="uploadProfilePictureButton" type="file"/>
-            
-            
         </div>
         <div class="navbarBioWrapper">
             <div class="profileNavbar">
-                <a href="">Edit profile</a>
+                <button onclick="openForm()">Edit profile</button>
+                <!-- The form -->
+                <div class="form-popup" id="myForm">
+                    <form action="" class="form-container">
+                    <h1>Change </h1>
+                
+                    <label for="name"><b>Name</b></label>
+                    <input type="text" placeholder="Change name" name="name">
+                
+                    <label for="address"><b>Address</b></label>
+                    <input type="text" placeholder="Change address" name="address">
+
+                    <label for="bio"><b>Bio</b></label>
+                    <input type="text" placeholder="Change Bio" name="bio">
+                
+                    <button type="submit" class="btn">Save</button>
+
+                    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+                    </form>
+                </div>
                 <a href="">Show purchase offers</a>
             </div>
             <div class="bio">
