@@ -6,8 +6,12 @@ from CastleApartments.models import Property
 def home(request):
     return render(request, "index.html")
 
-def buyer_profile(request):
+def buyer_profile(request):  #, pk):
     return render(request, 'buyerProfile.html')
+    """
+    userProfile = userProfile.objects.get(pk=pk)
+    return render(request, 'buyerProfile.html', {'user': user})
+    """
 
 def property_catalog(request):
     page = int(request.GET.get('page', 1))
@@ -23,6 +27,9 @@ def property_catalog(request):
         'next_page': page + 1
     })
 
-def property_detail(request, pk):
+def property_detail(request):   #, pk):
+    return render(request, 'propertyDetails.html')
+    """
     property = Property.objects.get(pk=pk)
     return render(request, 'property_detail.html', {'property': property})
+    """

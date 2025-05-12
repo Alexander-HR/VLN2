@@ -20,7 +20,7 @@
                     <p>Rooms: {{ property.num_rooms }}</p>
                     <p>Size: {{ property.square_meters }} m²</p>
                     <p>Status: {% if property.is_sold %}Sold{% else %}Available{% endif %}</p>
-                    <a href="{% url 'property_detail' property.id %}" class="btn btn-primary">View Details</a>
+                    <a href="{% url 'property_details' %}" class="btn btn-primary">View Details</a>
                 </div>
             </div>
         </div>
