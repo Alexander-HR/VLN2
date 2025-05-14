@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'CastleApartments',
     'users',
     'sellers',
-    'properties'
+    'properties',
+    'offers'
 ]
 
 MIDDLEWARE = [
