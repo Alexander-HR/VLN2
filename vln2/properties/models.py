@@ -31,3 +31,10 @@ class Property(models.Model):
 
     def __str__(self):
         return f"{self.property_type} in {self.city} - {self.price} ISK"
+    
+class PropertyImage(models.Model):
+    property = models.ForeignKey(Property, related_name='image_gallery', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='properties/images/')
+    
+    def __str__(self):
+        return f"Image for {self.property.address}"
