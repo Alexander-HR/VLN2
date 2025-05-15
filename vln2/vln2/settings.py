@@ -81,15 +81,17 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # PostgreSQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'verklegt_namskeid_db',
-        'USER': 'verklegt_db_user',
-        'PASSWORD': '3Y7QR6jr8LhgabYnlV6gOpPx',
-        'HOST': 'db-verklegt-namskeid-ii-eu-lv4uzh.postgres.database.azure.com',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',  # <- from PGDATABASE
+        'USER': 'verklegt_db_user',  # <- full username
+        'PASSWORD': "simplePass1",  # <- password
+        'HOST': 'db-verklegt-namskeid-ii-eu-44uz7b.postgres.database.azure.com',  # <- hostname
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',  # <- required by Azure
+        }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
