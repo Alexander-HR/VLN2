@@ -9,11 +9,14 @@
         <img src="{{ property.thumbnail.url }}" class="card-img-top" alt="Thumbnail">
         <div class="card-body">
             <h5 class="card-title">{{ property.address }}</h5>
-            <p>Price: {{ property.listing_price }} kr</p>
-            <p>Rooms: {{ property.num_rooms }}</p>
-            <p>Size: {{ property.square_meters }} m²</p>
-            <p>Status: {% if property.is_sold %}Sold{% else %}Available{% endif %}</p>
-            <a href="{% url 'property_details' %}" class="btn btn-primary">View Details</a>
+            <p>listing_price: {{ property.listing_price }} kr</p>
+            <p>rooms: {{ property.num_rooms }}</p>
+            <p>area: {{ property.square_meters }} m²</p>
+            <p>sold: {% if property.is_sold %}Sold{% else %}Available{% endif %}</p>
+            <a href="{% url 'property_detail' property.id %}">
+                <button>View Details</button>
+            </a>
+
         </div>
     </div>
 </div>

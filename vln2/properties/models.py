@@ -30,7 +30,7 @@ class Property(models.Model):
 
 
     def __str__(self):
-        return f"{self.property_type} in {self.city} - {self.price} ISK"
+        return f"{self.property_type} in {self.city} - {self.listing_price} ISK"
     
 class PropertyImage(models.Model):
     property = models.ForeignKey(Property, related_name='image_gallery', on_delete=models.CASCADE)

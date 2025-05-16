@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from CastleApartments.models import Property
+from properties.models import Property
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 
@@ -61,3 +61,7 @@ def property_detail(request):   #, pk):
     property = Property.objects.get(pk=pk)
     return render(request, 'property_detail.html', {'property': property})
     """
+
+def property_detail(request, property_id):
+    property = get_object_or_404(Property, id=property_id)
+    return render(request, 'propertyDetails.html', {'property': property})
