@@ -17,7 +17,7 @@
       <img src="{{ image.image.url }}" onclick="updateMainImage(this.src)" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
     {% endfor %}
     <div class="d-flex justify-content-end">
-        <a href="#">
+        <a href="{% url 'guest_profile' property.seller.user.id %}">
           <img src="{% static 'images/smiley.png' %}" alt="Profile" style="width:30px; height:30px;">
         </a>
       </div>
