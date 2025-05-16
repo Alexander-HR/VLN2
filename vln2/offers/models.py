@@ -39,7 +39,7 @@ class FinalizedOffer(models.Model):
     # Credit card information
     cardholder_name = models.CharField(max_length=100, blank=True, null=True)
     card_number = models.CharField(max_length=16, blank=True, null=True)
-    expiry_date = models.DateField(max_length=7, blank=True, null=True)  # Format: MM/YYYY
+    expiry_date = models.CharField(max_length=5, blank=True, null=True)  # Format: MM/YY
     cvc = models.CharField(max_length=3, blank=True, null=True)
 
     # Bank transfer information

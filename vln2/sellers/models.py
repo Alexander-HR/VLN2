@@ -11,9 +11,9 @@ class Seller(models.Model):
     seller_type = models.CharField(max_length=20, choices=SELLER_TYPE_CHOICES)
     
     # Only for agencies
-    street_name = models.CharField(max_length=100) 
-    city = models.CharField(max_length=100)
-    postal_code = models.CharField(max_length=10)
+    street_name = models.CharField(max_length=100, blank=True, null=True) 
+    city = models.CharField(max_length=100, blank=True, null=True)
+    postal_code = models.CharField(max_length=10, blank=True, null=True)
 
     logo = models.ImageField(upload_to='sellers/logos/', blank=True, null=True)
     cover_image = models.ImageField(upload_to='sellers/cover_images/', blank=True, null=True)
