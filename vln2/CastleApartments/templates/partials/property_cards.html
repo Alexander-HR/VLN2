@@ -10,9 +10,9 @@
         <div class="card-body">
             <h5 class="card-title">{{ property.address }}</h5>
             <p>listing_price: {{ property.listing_price }} kr</p>
-            <p>rooms: {{ property.num_rooms }}</p>
-            <p>area: {{ property.square_meters }} m²</p>
-            <p>sold: {% if property.is_sold %}Sold{% else %}Available{% endif %}</p>
+            <p>rooms: {{ property.rooms }}</p>
+            <p>area: {{ property.area }} m²</p>
+            <p>sold: {% if property.sold %}Sold{% else %}Available{% endif %}</p>
             <a href="{% url 'property_detail' property.id %}">
                 <button>View Details</button>
             </a>
