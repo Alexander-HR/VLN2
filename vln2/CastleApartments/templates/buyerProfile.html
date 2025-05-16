@@ -1,9 +1,18 @@
-{% extends "navbar.html" %} {% block title %} Buyer profile {% endblock %}
+{% extends "navbar.html" %} {% block title %} Profile {% endblock %}
 {% block content %}
 {% load static %}
 
-<script src="{% static 'editProfileForm.js' %}"></script>
-
+<script src="{% static '/js/editProfileForm.js' %}"></script>
+{% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 <div class="banner">
     <img src="{% static 'images/test_banner.png' %}" alt="Your banner here">
 </div>
@@ -21,27 +30,30 @@
                 <button onclick="openForm()">Edit profile</button>
                 <!-- The form -->
                 <div class="form-popup" id="myForm">
-                    <form action="" class="form-container">
-                    <h1>Change </h1>
-                
-                    <label for="name"><b>Name</b></label>
-                    <input type="text" placeholder="Change name" name="name">
-                
-                    <label for="address"><b>Address</b></label>
-                    <input type="text" placeholder="Change address" name="address">
-
-                    <label for="bio"><b>Bio</b></label>
-                    <input type="text" placeholder="Change Bio" name="bio">
-                
-                    <button type="submit" class="btn">Save</button>
-
-                    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-                    </form>
+                    <form method="POST" class="form-container">
+                        {% csrf_token %}
+                        <h1>Edit Profile</h1>
+                      
+                        <label for="first_name"><b>First name</b></label>
+                        <input type="text" name="first_name" placeholder="Change first name">
+                      
+                        <label for="last_name"><b>Last name</b></label>
+                        <input type="text" name="last_name" placeholder="Change last name">
+                      
+                        <label for="bio"><b>Bio</b></label>
+                        <input type="text" name="bio" placeholder="Change Bio">
+                      
+                        <button type="submit" class="btn">Save</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+                      </form>
                 </div>
                 <a href="">Show purchase offers</a>
             </div>
             <div class="bio">
-                <p>With a deep passion for real estate and a strong commitment to client 
+                <p>Name: {{user.first_name}} {{user.last_name}}</p>
+                <p>Email: {{user.email}}</p>
+                <p>Bio: 
+                    With a deep passion for real estate and a strong commitment to client 
                     satisfaction, I’ve spent the past several years helping individuals and 
                     families find homes that truly fit their needs and lifestyle. I believe 
                     that buying or selling a property is more than just a transaction—it’s a 
@@ -49,7 +61,7 @@
                     and attention to detail in every interaction. Whether you're searching for
                     your dream home, looking to sell, or just exploring the market, I’m here
                     to guide you with knowledge, dedication, and a genuine desire to help
-                    you succeed.</p>
+                    you succeed. {{user.bio}} </p>
             </div>
         </div>
     </div>

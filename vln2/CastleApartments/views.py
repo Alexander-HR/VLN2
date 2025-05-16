@@ -1,19 +1,47 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from properties.models import Property
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from users.models import CustomUser
+from sellers.models import Seller
+from django.contrib import messages
+
 
 # Create your views here.
 def home(request):
     return render(request, "index.html")
 
-def buyer_profile(request):  #, pk):
-    return render(request, 'buyerProfile.html')
-    """
-    userProfile = userProfile.objects.get(pk=pk)
-    return render(request, 'buyerProfile.html', {'user': user})
-    """
+def buyer_profile(request, user_id):
+    buyer = get_object_or_404(CustomUser, id=user_id)
+
+    if request.method == "POST":
+        data = request.POST
+        updated = False
+
+        if data.get('first_name'):
+            buyer.first_name = data['first_name']
+            updated = True
+        if data.get('last_name'):
+            buyer.last_name = data['last_name']
+            updated = True
+        if data.get('bio'):
+            buyer.profile.bio = data['bio']
+            updated = True
+
+        if updated:
+            buyer.save()
+            messages.success(request, "Your profile was updated successfully.")
+        else:
+            messages.warning(request, "No changes detected. Please fill in at least one field.")
+
+        return redirect('buyer_profile', user_id=buyer.id)
+
+    return render(request, 'buyerProfile.html', {'buyer': buyer})
+
+def guest_profile(request, user_id):
+    profile = get_object_or_404(Seller, id=user_id)
+    return render(request, 'guestProfile.html', {'profile': profile})
 
 def seller_profile(request):  #, pk):
     page = int(request.GET.get('page', 1))
@@ -28,10 +56,6 @@ def seller_profile(request):  #, pk):
         'has_next': page_obj.has_next(),
         'next_page': page + 1
     })
-    """
-    userProfile = userProfile.objects.get(pk=pk)
-    return render(request, 'sellerProfile.html', {'user': user})
-    """
 
 def property_catalog(request):
     page = int(request.GET.get('page', 1))
@@ -54,13 +78,6 @@ def property_catalog(request):
         'has_next': page_obj.has_next(),
         'next_page': page + 1
     })
-
-def property_detail(request):   #, pk):
-    return render(request, 'propertyDetails.html')
-    """
-    property = Property.objects.get(pk=pk)
-    return render(request, 'property_detail.html', {'property': property})
-    """
 
 def property_detail(request, property_id):
     property = get_object_or_404(Property, id=property_id)

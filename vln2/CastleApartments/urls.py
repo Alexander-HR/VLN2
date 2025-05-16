@@ -10,9 +10,9 @@ from users import views as user_views
 
 urlpatterns = [
     path('', views.property_catalog, name='home'),
-    path('#/', views.buyer_profile, name='buyer_profile'),
-    path('property/', views.property_detail, name='property_details'),
-    path('profile/', views.seller_profile, name='seller_profile'),
+    path('buyer/<int:user_id>/', views.buyer_profile, name='buyer_profile'),
+    path('seller/', views.seller_profile, name='seller_profile'),
+    path('guest/<int:user_id>/', views.guest_profile, name='guest_profile'),
     path('property/<int:property_id>/', views.property_detail, name='property_detail'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('signup/', user_views.signup, name='signup'),
